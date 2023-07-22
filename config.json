@@ -5,7 +5,7 @@
     "metricsListenOn": [],
     "replicationGroupId": "RG001",
     "restEndpoints": {
-        "localhost": "us-east-1",
+        "localhost": "location-motion-v1",
         "127.0.0.1": "us-east-1",
         "cloudserver-front": "us-east-1",
         "s3.docker.test": "us-east-1",
@@ -60,7 +60,7 @@
     },
     "clusters": 1,
     "log": {
-        "logLevel": "info",
+        "logLevel": "debug",
         "dumpLevel": "error"
     },
     "healthChecks": {
@@ -89,6 +89,10 @@
     "pfsDaemon": {
         "bindAddress": "localhost",
         "port": 9992
+    },
+    "motionDaemon": {
+        "bindAddress": "localhost",
+        "port": 40080
     },
     "recordLog": {
         "enabled": true,
