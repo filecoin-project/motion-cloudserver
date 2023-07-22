@@ -21,7 +21,7 @@
   "dependencies": {
     "@azure/storage-blob": "^12.12.0",
     "@hapi/joi": "^17.1.0",
-    "arsenal": "git+https://github.com/scality/arsenal#8.1.105",
+    "arsenal": "git+https://github.com/filecoin-project/motion-arsenal",
     "async": "~2.5.0",
     "aws-sdk": "2.905.0",
     "bucketclient": "scality/bucketclient#8.1.9",
@@ -100,6 +100,7 @@
     "start_mdserver": "node mdserver.js",
     "start_dataserver": "node dataserver.js",
     "start_pfsserver": "node pfsserver.js",
+    "start_motionserver": "node motionserver.js",
     "start_s3server": "node index.js",
     "start_dmd": "npm-run-all --parallel start_mdserver start_dataserver",
     "start_utapi": "node lib/utapi/utapi.js",

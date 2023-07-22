@@ -108,5 +108,18 @@
         "legacyAwsBehavior": false,
         "isCold": true,
         "details": {}
+    },
+    "location-motion-v1": {
+        "type": "motion",
+        "objectId": "location-motion-v1",
+        "legacyAwsBehavior": false,
+        "isCold": false,
+        "details": {
+            "motionDaemonEndpoint": {
+                "host": "localhost",
+                "path": "/v0/blob",
+                "port": 40080
+            }
+        }
     }
 }
