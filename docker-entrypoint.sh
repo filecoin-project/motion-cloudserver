@@ -208,6 +208,26 @@ if test -v INITIAL_INSTANCE_ID && test -v S3METADATAPATH && ! test -f ${S3METADA
     echo -n ${INITIAL_INSTANCE_ID} > ${S3METADATAPATH}/uuid
 fi
 
+# modifying locationConfig.json
+JQ_LOCATION_CONFIG="."
+
+if [[ "$MOTION_HOST" ]]; then
+    JQ_LOCATION_CONFIG="$JQ_LOCATION_CONFIG | .\"location-motion-v1\".details.motionDaemonEndpoint.host=\"$MOTION_HOST\""
+fi
+
+if [[ "$MOTION_PATH" ]]; then
+    JQ_LOCATION_CONFIG="$JQ_LOCATION_CONFIG | .\"location-motion-v1\".details.motionDaemonEndpoint.path=\"$MOTION_PATH\""
+fi
+
+if [[ "$MOTION_PORT" ]]; then
+    JQ_LOCATION_CONFIG="$JQ_LOCATION_CONFIG | .\"location-motion-v1\".details.motionDaemonEndpoint.port=\"$MOTION_PORT\""
+fi
+
+if [[ $JQ_LOCATION_CONFIG != "." ]]; then
+    jq "$JQ_LOCATION_CONFIG" locationConfig.json > locationConfig.json.tmp
+    mv locationConfig.json.tmp locationConfig.json
+fi
+
 # s3 secret credentials for Zenko
 if [ -r /run/secrets/s3-credentials ] ; then
     . /run/secrets/s3-credentials
